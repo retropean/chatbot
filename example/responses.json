@@ -9,7 +9,8 @@
 		"lvl3": "heyyyyyyyyyy!",
 		"lvl4": "hey there ;)",
 		"lvl5": "hey sweetie :)",
-		"lvl6": "hey babe <3"
+		"lvl6": "hey babe <3",
+		"friendpoints": 0.1
 	      }
 	    ],
         "affirm": [
@@ -20,7 +21,8 @@
 		"lvl3": "okay sweetie",
 		"lvl4": "okayyyyyyy<3",
 		"lvl5": "okayyyyyyyyyyyy<3333",
-		"lvl6": "okayyyyyyyyy :*:*:*:*"
+		"lvl6": "okayyyyyyyyy :*:*:*:*",
+		"friendpoints": 0.0
 	      }
 	    ],
         "restaurant_search": [
@@ -31,7 +33,8 @@
 		"lvl3": "oh food! I sure am hungry...",
 		"lvl4": "Are you going to take me on a date?",
 		"lvl5": "I am hungry ;)",
-		"lvl6": "Lets go out!"
+		"lvl6": "Lets go out!",
+		"friendpoints": 0.0
 	      }
 	],
         "goodbye": [
@@ -42,7 +45,8 @@
 		"lvl3": "Bye! Take care!",
 		"lvl4": "Bye ;)",
 		"lvl5": "Bye! <3",
-		"lvl6": "Don't leave me babe!"
+		"lvl6": "Don't leave me babe!",
+		"friendpoints": 0.0
 	      }
 	],
 	"sampleGetWeather": [
@@ -53,7 +57,8 @@
 		"lvl3": "I don't know!!!",
 		"lvl4": "The answer.....................is blowin in the wind ;)",
 		"lvl5": "Baby its pouring outside",
-		"lvl6": "It's starting to drip! ;)"
+		"lvl6": "It's starting to drip! ;)",
+		"friendpoints": 0.0
 	      }
 	]
     }
