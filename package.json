@@ -22,8 +22,9 @@
   ],
   "author": "Alessio Calafiore <alessio.calafiore@gmail.com>",
   "contributors": [
-    { "name" : "Ben",
-      "email" : "ben@howdy.ai"
+    {
+      "name": "Ben",
+      "email": "ben@howdy.ai"
     }
   ],
   "license": "ISC",

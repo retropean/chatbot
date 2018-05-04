@@ -1,0 +1,18 @@
+{
+  "chatbot_brain": {
+    "responses": {
+	"greet": [
+	      {
+		"misunderstand": "umm are you trying to greet me!?",		
+		"1": "hey", 
+		"2": "heyyy", 
+		"3": "heyyyyyyyyyy!",
+		"4": "hey there ;)",
+		"5": "hey sweetie :)",
+		"6": "hey babe <3"
+	      }
+	    ]
+    }
+  }
+}
+

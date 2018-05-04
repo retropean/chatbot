@@ -64,11 +64,11 @@ if (!process.env.slack_token) {
 const Botkit = require('botkit')
 const rasa = require('../src/middleware-rasa')({
   rasa_uri: 'http://localhost:5000',
-  rasa_project: undefined
+  rasa_project: 'default'
 })
 
 const controller = Botkit.slackbot({
-  debug: true
+  debug: true  
 })
 
 const bot = controller.spawn({
@@ -77,9 +77,33 @@ const bot = controller.spawn({
 console.log(rasa)
 controller.middleware.receive.use(rasa.receive)
 
+/*var knowledge = JSON.parse('/responses.json');*/
+
 /* this uses rasa middleware defined above */
 controller.hears(['greet'], 'direct_message,direct_mention,mention', rasa.hears, function (bot, message) {
+  console.log(message.intent.name)
   console.log(JSON.stringify(message))
-  console.log('hello')
+  console.log('Hello')
+/*  console.log(knowledge)*/
   bot.reply(message, 'Hello!')
+})
+
+controller.hears(['restaurant_search'], 'direct_message,direct_mention,mention', rasa.hears, function (bot, message) {
+/*  console.log(JSON.stringify(message));*/
+  console.log('Intent:', message.intent);
+  console.log('Entities:', message.entities); 
+  if(message.intent.confidence<.75) {
+    bot.reply(message, 'Are you asking about Restaurants? Ask it clearer.');}
+  else bot.reply(message, 'This aint Yelp sweetie');
+})
+
+controller.hears(['sampleGetWeather'], 'direct_message,direct_mention,mention', rasa.hears, function (bot, message) {
+  console.log(JSON.stringify(message))
+  console.log(message.entities.length)
+/* write code to catch error if not there*/
+  if (message.entities.length == 0){
+    bot.reply(message, 'Im not the friggin weatherwoman')}
+  else if (message.entities[0].value == 'district of columbia') {
+    bot.reply(message, 'WASHINGTON!? SWEATY AND HOT I ASSUME')}
+  else bot.reply(message, 'Whatever')
 })
