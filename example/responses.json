@@ -4,15 +4,58 @@
 	"greet": [
 	      {
 		"misunderstand": "umm are you trying to greet me!?",		
-		"1": "hey", 
-		"2": "heyyy", 
-		"3": "heyyyyyyyyyy!",
-		"4": "hey there ;)",
-		"5": "hey sweetie :)",
-		"6": "hey babe <3"
+		"lvl1": "hey", 
+		"lvl2": "heyyy", 
+		"lvl3": "heyyyyyyyyyy!",
+		"lvl4": "hey there ;)",
+		"lvl5": "hey sweetie :)",
+		"lvl6": "hey babe <3"
 	      }
-	    ]
+	    ],
+        "affirm": [
+	      {
+		"misunderstand": "great!?",		
+		"lvl1": "good", 
+		"lvl2": "great", 
+		"lvl3": "okay sweetie",
+		"lvl4": "okayyyyyyy<3",
+		"lvl5": "okayyyyyyyyyyyy<3333",
+		"lvl6": "okayyyyyyyyy :*:*:*:*"
+	      }
+	    ],
+        "restaurant_search": [
+	      {
+		"misunderstand": "are you trying to ask me about restaurants?",		
+		"lvl1": "this ain't yelp", 
+		"lvl2": "go look at yelp", 
+		"lvl3": "oh food! I sure am hungry...",
+		"lvl4": "Are you going to take me on a date?",
+		"lvl5": "I am hungry ;)",
+		"lvl6": "Lets go out!"
+	      }
+	],
+        "goodbye": [
+	      {
+		"misunderstand": "Are you leaving me?",		
+		"lvl1": "Goodbye", 
+		"lvl2": "Bye now :)", 
+		"lvl3": "Bye! Take care!",
+		"lvl4": "Bye ;)",
+		"lvl5": "Bye! <3",
+		"lvl6": "Don't leave me babe!"
+	      }
+	],
+	"sampleGetWeather": [
+	      {
+		"misunderstand": "Are you asking me about the weather?",		
+		"lvl1": "I'm not the weatherwoman!", 
+		"lvl2": "Check weather.com of course", 
+		"lvl3": "I don't know!!!",
+		"lvl4": "The answer.....................is blowin in the wind ;)",
+		"lvl5": "Baby its pouring outside",
+		"lvl6": "It's starting to drip! ;)"
+	      }
+	]
     }
   }
 }
-

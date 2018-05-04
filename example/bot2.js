@@ -61,10 +61,7 @@ if (!process.env.slack_token) {
   process.exit(1)
 }
 
-
-/*console.log( require( "./responses.json" ) );*/
-var knowledge = require("./responses.json");
-const Botkit = require('botkit');
+const Botkit = require('botkit')
 const rasa = require('../src/middleware-rasa')({
   rasa_uri: 'http://localhost:5000',
   rasa_project: 'default'
@@ -80,37 +77,33 @@ const bot = controller.spawn({
 console.log(rasa)
 controller.middleware.receive.use(rasa.receive)
 
+/*var knowledge = JSON.parse('/responses.json');*/
 
 /* this uses rasa middleware defined above */
 controller.hears(['greet'], 'direct_message,direct_mention,mention', rasa.hears, function (bot, message) {
-  
-  
-  var convo_content = [];
-  var i;
-  var obj;
-  console.log(Object.keys(knowledge.chatbot_brain.responses).length);
-
-  for (i = 0; i < Object.keys(knowledge.chatbot_brain.responses).length; ++i)
-  {
-    obj = knowledge.chatbot_brain.responses[i];
-    console.log('looking through the brain for responses at place number:');
-    console.log(i);
-    console.log('Looking at the key at response intent:');
-    console.log(Object.keys(knowledge.chatbot_brain.responses)[i]);
-
-    if (Object.keys(knowledge.chatbot_brain.responses)[i] == message.intent.name)
-    {
-      convo_content = Object.values(knowledge.chatbot_brain.responses)[i];
-      /*console.log(knowledge.chatbot_brain.responses.getByIndex(i))*/
-      console.log('Found it! Its:');
-      console.log(convo_content);
-    }
-  }
-  console.log('returning convo_content:');
-  console.log(convo_content);
-  console.log(typeof convo_content);
-  console.log(convo_content[0].lvl1);
-/*  console.log(knowledge.chatbot_brain.responses.greet)*/
+  console.log(message.intent.name)
+  console.log(JSON.stringify(message))
+  console.log('Hello')
 /*  console.log(knowledge)*/
-  bot.reply(message, convo_content[0].lvl1);
+  bot.reply(message, 'Hello!')
+})
+
+controller.hears(['restaurant_search'], 'direct_message,direct_mention,mention', rasa.hears, function (bot, message) {
+/*  console.log(JSON.stringify(message));*/
+  console.log('Intent:', message.intent);
+  console.log('Entities:', message.entities); 
+  if(message.intent.confidence<.75) {
+    bot.reply(message, 'Are you asking about Restaurants? Ask it clearer.');}
+  else bot.reply(message, 'This aint Yelp sweetie');
+})
+
+controller.hears(['sampleGetWeather'], 'direct_message,direct_mention,mention', rasa.hears, function (bot, message) {
+  console.log(JSON.stringify(message))
+  console.log(message.entities.length)
+/* write code to catch error if not there*/
+  if (message.entities.length == 0){
+    bot.reply(message, 'Im not the friggin weatherwoman')}
+  else if (message.entities[0].value == 'district of columbia') {
+    bot.reply(message, 'WASHINGTON!? SWEATY AND HOT I ASSUME')}
+  else bot.reply(message, 'Whatever')
 })
