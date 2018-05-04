@@ -1,59 +1,14 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-           ______     ______     ______   __  __     __     ______
-          /\  == \   /\  __ \   /\__  _\ /\ \/ /    /\ \   /\__  _\
-          \ \  __<   \ \ \/\ \  \/_/\ \/ \ \  _"-.  \ \ \  \/_/\ \/
-           \ \_____\  \ \_____\    \ \_\  \ \_\ \_\  \ \_\    \ \_\
-            \/_____/   \/_____/     \/_/   \/_/\/_/   \/_/     \/_/
-
-This is a sample Slack bot built with Botkit.
-
-This bot demonstrates some core features of Botkit
-leveraging Rasa NLU plugin:
-
-* Connect to Slack using the real time API
-* Receive messages based on "spoken" patterns
-* Reply to messages
-
-# RUN THE BOT:
-
-  Get Rasa NLU up and running by checking out their repository
-
-    -> https://github.com/RasaHQ/rasa_nlu
-
-  Follow the instructions on the README.md file and start Rasa NLU
-
-  Then get a Bot token from Slack:
-
-    -> http://my.slack.com/services/new/bot
-
-  Clone the botkit-rasa repository and move into the example directory:
-
-    -> git clone https://github.com/sohlex/botkit-rasa.git
-
-  Open the terminal and from the example directory, run the commands:
-
-    -> npm install
-    -> slack_token= <token> node bot.js
-
-# USE THE BOT:
-
-  Find your bot inside Slack to send it a direct message.
-
-  Say: "Hello"
-
-  The bot should reply "Hello!" If it didn't, there's a problem with
-  Rasa NLU configuration, check the bot and Rasa console for errors.
-
-  Make sure to invite your bot into other channels using /invite @<my bot>!
-
-# EXTEND THE BOT:
-
-  Botkit is has many features for building cool and useful bots!
-
-  Read all about it here:
-
-    -> http://howdy.ai/botkit
-
+               __         __                             __ 
+.----.-----.--|  | .----.|  |--.---.-.-----.-----.-----.|  |
+|   _|  -__|  _  | |  __||     |  _  |     |     |  -__||  |
+|__| |_____|_____| |____||__|__|___._|__|__|__|__|_____||__|
+                                                            
+ __           __   
+|  |--.-----.|  |_ 
+|  _  |  _  ||   _|
+|_____|_____||____|
+                   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 if (!process.env.slack_token) {
@@ -140,8 +95,37 @@ controller.hears(['greet'], 'direct_message,direct_mention,mention', rasa.hears,
       console.log(convo_content);
     }
   }
-  /* say the thing*/
-  bot.reply(message, convo_content[0].lvl1);
+  /* say the thing based on your friend level*/
+  console.log(friend_content.friendlevel);
+  console.log(message);
+  if (message.intent.confidence < .75)
+  {
+    bot.reply(message, convo_content[0].misunderstand);
+  }
+  else if (friend_content.friendlevel < 1)
+  {
+    bot.reply(message, convo_content[0].lvl1);
+  }
+  else if (friend_content.friendlevel >= 1 && friend_content.friendlevel < 4)
+  {
+    bot.reply(message, convo_content[0].lvl2);
+  }
+  else if (friend_content.friendlevel >= 4 && friend_content.friendlevel < 8)
+  {
+    bot.reply(message, convo_content[0].lvl3);
+  }
+  else if (friend_content.friendlevel >= 8 && friend_content.friendlevel < 12)
+  {
+    bot.reply(message, convo_content[0].lvl4);
+  }
+  else if (friend_content.friendlevel >= 12 && friend_content.friendlevel < 16)
+  {
+    bot.reply(message, convo_content[0].lvl5);
+  }
+  else if (friend_content.friendlevel >= 16 && friend_content.friendlevel < 20)
+  {
+    bot.reply(message, convo_content[0].lvl6);
+  }
 
   /* increment friend points*/
   friendlist[message.user].friendlevel += convo_content[0].friendpoints;
